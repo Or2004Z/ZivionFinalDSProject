@@ -272,15 +272,15 @@ def home():
 @app.route('/data1')
 def data1():
     """Renders the home page."""
-    a = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
+    x = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
     return render_template(
         'data1.html',
         title='Data1',
         year=datetime.now().year,
         data = a.iloc[0:6,0:1],
         dataa = a.iloc[6:,0:1],
-        data1 = b.iloc[0:6,0:6],
-        data11 = b.iloc[6:,0:6],
+        data1 = x.iloc[0:6,0:6],
+        data11 = x.iloc[6:,0:6],
 
     )
 
