@@ -98,12 +98,14 @@
                 <th>
                     <x>Knowlege Rating</x>
                     {{ data1.to_html(classes="table table-striped") | safe}}
+
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data1" style="height:50px; width:100px;">Press</button>
+                    <div id="data1" class="collapse">
+                        {{ data11.to_html(classes="table table-striped") | safe}}
+                    </div>
                 </th>
             </tr>
         </table>
-        <input id="csrf_token" name="csrf_token" type="hidden" />
-        <label for="name">Name Of Country</label>
-        <input id="name" name="name" type="text" value="" />
 
     </div>
     </body>
