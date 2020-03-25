@@ -1,0 +1,78 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for message in messages %}
+
+    {% endfor %}
+{% endif %}
+{% endwith %}
+        <style>
+            body {
+                background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');
+            }
+
+            div.transbox {
+                margin: 30px;
+                background-color: rgba(255,250,250,0.6);
+                border: 1px solid black;
+            }
+
+            td {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: left;
+                font-size: 30px;
+                font-weight: 100;
+            }
+        </style>
+    <body>
+        <div class="transbox">
+            <form method=post>
+                {{ form.csrf }}
+                {{ form.csrf_token }}
+                <table>
+
+                    <tr>
+                        <td>
+                            {{ form.username.label }}
+                        </td>
+                        <td>
+                            {{ form.username }}
+                        </td>
+                        <td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ form.password.label }}
+                        </td>
+                        <td>
+                            {{ form.password }}
+                        </td>
+                        <td>
+                            {% if form.password.errors %}
+                            <ul class="text-danger">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <div class="input submit">
+                                <input type="submit" value="Login">
+                            </div>
+                        <td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+
+
+    {% endblock %}

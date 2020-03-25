@@ -1,0 +1,8 @@
+flask
+matplotlib
+flask_wtf
+requests
+pandas
+numpy
+bs4
+lxml

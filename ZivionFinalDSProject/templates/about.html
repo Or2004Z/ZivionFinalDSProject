@@ -1,0 +1,80 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');
+        }
+
+        div.transbox {
+            margin: 30px;
+            background-color: rgba(255,250,250,0.6);
+            border: 1px solid black;
+        }
+
+            div.transbox h {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: right;
+                font-size: 50px;
+                font-weight: 500;
+            }
+
+
+            div.transbox p {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: "right";
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            div.transbox x {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: right;
+                font-size: 25px;
+                font-weight: 500;
+            }
+
+            div.transbox img {
+                margin: 1%;
+            }
+    </style>
+</head>
+<body>
+    <div class="transbox">
+        <p dir="rtl" size="10">על הפרויקט</p>
+        <img src="https://intarchmed.com/wp-content/uploads/2019/11/about1.png" width="360" height="120" align="left">
+        <p dir="rtl">
+            הפרויקט הינו במסגרת מקצוע "מדעי הנתונים", של תלמידי שכבת י', תש"פ בתיכונט ע"ש אלתרמן בתל אביב.
+            <br /><br />
+            הפרויקט משלב שני תחומי ידע עיקריים:
+            <br /><br />
+            * תכנות בסביבת האינטרנט
+            <br />
+            * מדעי הנתונים
+            <br /><br />
+            במסגרת הפרויקט איתרתי מאגרי מידע ברשת ובכוונתי לבנות  סביבם אתר אינטרנט המאפשר גישה אל מאגרי המידע, ניתוח נתונים והצגתם בצורה נוחה למשתמשים. האתר יאפשר למשתמש לחקור את הנתונים בתחום הנבחר ולנסות להגיע לתובנות ומסקנות בעלות ערך.
+            <br /><br />
+            הפרויקט יתבסס על המרכיבים הטכנולוגיים הבאים:
+            <br /><br />
+            * שפת פייתון.
+            <br />
+            * ספריית Pandas.
+            <br />
+            * תשתית Flask לבניית שרת אינטרנט.
+        </p>
+        <button onclick="window.location.href='http://worldpopulationreview.com/countries/education-rankings-by-country/'"><p dir="rtl">מסמך אפיון</p></button>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+,
