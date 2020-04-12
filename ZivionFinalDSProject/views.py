@@ -268,21 +268,37 @@ def home():
         year=datetime.now().year,
     )
 
-@app.route('/')
-@app.route('/data1')
-def data1():
-    """Renders the home page."""
-    x = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
-    return render_template(
-        'data1.html',
-        title='Data1',
-        year=datetime.now().year,
-        data = a.iloc[0:6,0:1],
-        dataa = a.iloc[6:,0:1],
-        data1 = x.iloc[0:6,0:6],
-        data11 = x.iloc[6:,0:6],
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = UserRegistrationFormStructure(request.form)
 
+    if (request.method == 'POST' and form.validate()):
+        if (not db_Functions.IsUserExist(form.username.data)):
+            db_Functions.AddNewUser(form)
+            flash('Welcom - '+ form.FirstName.data + " " + form.LastName.data )
+        else:
+            flash('Error: User with this Username already exist ! - '+ form.username.data)
+
+    return render_template(
+        'register.html', 
+        form=form, 
+        title='Register New User',
+        year=datetime.now().year,
+        )
+
+@app.route('/')
+@app.route('/register1')
+def register1():
+    """Renders the home page."""
+    x  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
+    new = x.isin(["israel"]),
+    return render_template(
+        'register1.html',
+        title='register1',
+        year=datetime.now().year,
     )
+
+
 
 @app.route('/')
 @app.route('/data2')
@@ -330,27 +346,30 @@ def DataModel():
     )
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def Register():
-    form = UserRegistrationFormStructure(request.form)
-
+@app.route('/data1', methods=['GET', 'POST'])
+def data1():
+    form = QueryFormStructure(request.form)
+    x  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
     if (request.method == 'POST' and form.validate()):
-        if (not db_Functions.IsUserExist(form.username.data)):
-            db_Functions.AddNewUser(form)
-            db_table = ""
-
-            flash('Thanks for registering new user - '+ form.FirstName.data + " " + form.LastName.data )
-            # Here you should put what to do (or were to go) if registration was good
-        else:
-            flash('Error: User with this Username already exist ! - '+ form.username.data)
-            form = UserRegistrationFormStructure(request.form)
-
-    return render_template(
-        'register.html', 
+            return render_template(
+        'register1.html', 
         form=form, 
         title='Register New User',
         year=datetime.now().year,
         repository_name='Pandas',
+        )
+            # Here you should put what to do (or were to go) if registration was good
+
+    return render_template(
+        'data1.html', 
+        form=form, 
+        title='Register New User',
+        year=datetime.now().year,
+        repository_name='Pandas',
+        data = a.iloc[0:6,0:1],
+        dataa = a.iloc[6:,0:1],
+        data1 = x.iloc[0:6,0:6],
+        data11 = x.iloc[6:,0:6],
         )
 
 # -------------------------------------------------------

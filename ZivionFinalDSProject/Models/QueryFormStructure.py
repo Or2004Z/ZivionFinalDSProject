@@ -57,10 +57,10 @@ class LoginFormStructure(FlaskForm):
 ##                         form be "posted" (sent to the server for process)
 class UserRegistrationFormStructure(FlaskForm):
     FirstName  = StringField('First name:  ' ,[validators.Length(min=2)])
-    LastName   = StringField('First name:  ' ,[validators.Length(min=2)])
-    PhoneNum   = StringField('First name:  ' ,[validators.Length(min=10)])
-    EmailAddr  = StringField('First name:  ' ,[validators.Email()])
-    username   = StringField('First name:  ' ,[validators.Length(min=2)])
+    LastName   = StringField('LastName:  ' ,[validators.Length(min=2)])
+    PhoneNum   = StringField('PhoneNum:  ' ,[validators.Length(min=10)])
+    EmailAddr  = StringField('EmailAddr:  ' ,[validators.Email()])
+    username   = StringField('username:  ' ,[validators.Length(min=2)])
     password   = PasswordField('Pass word:  ' ,[validators.Length(min=2)])
     submit = SubmitField('Submit')
 

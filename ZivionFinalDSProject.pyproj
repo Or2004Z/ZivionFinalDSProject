@@ -74,13 +74,14 @@
     <Content Include="ZivionFinalDSProject\static\scripts\_references.js" />
     <Content Include="ZivionFinalDSProject\templates\about.html" />
     <Content Include="ZivionFinalDSProject\templates\contact.html" />
-    <Content Include="ZivionFinalDSProject\templates\data1.html" />
+    <Content Include="ZivionFinalDSProject\templates\register1.html" />
+    <Content Include="ZivionFinalDSProject\templates\register.html" />
     <Content Include="ZivionFinalDSProject\templates\data2.html" />
     <Content Include="ZivionFinalDSProject\templates\DataModel.html" />
     <Content Include="ZivionFinalDSProject\templates\index.html" />
     <Content Include="ZivionFinalDSProject\templates\layout.html" />
     <Content Include="ZivionFinalDSProject\templates\login.html" />
-    <Content Include="ZivionFinalDSProject\templates\register.html" />
+    <Content Include="ZivionFinalDSProject\templates\data1.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 
