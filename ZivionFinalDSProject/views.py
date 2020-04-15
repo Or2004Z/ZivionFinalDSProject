@@ -314,6 +314,7 @@ def DataAnalyze2():
 def data2():
     form = QueryFormStructure(request.form)
     b1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data2.csv'))
+    b1['USdollars'] = b1['USdollars'].astype(int)
     b = b1.set_index(b1.index+1)
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output2.png"
@@ -323,14 +324,16 @@ def data2():
         aa = a.index[a['name'] == form.name.data].tolist()
         aaa = int(aa[0])
         data222 = b.iloc[[1,bbb,last2]]
-        plot = data222.plot(kind='bar',x='Name',y='Ranking')
+        plot = data222.plot(kind='bar',x='Name',y='USdollars')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
         diffrencee = abs(bbb-aaa)
-        if (diffrencee<25):
+        if (diffrencee<=50):
             answerr = 'is'
         else:
             answerr = 'is not'
+
+
         return render_template(
         'DataAnalyze2.html', 
         year=datetime.now().year,
@@ -340,7 +343,7 @@ def data2():
         data222 = b.iloc[bb],
         dataaa=a1.iloc[aa],
         image2 = imagePath,
-        answer2=answerr,
+        answer2 = answerr,
         diffrence2 = diffrencee,
         )
        
@@ -405,7 +408,7 @@ def data1():
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
         diffrence = abs(xxx-aaa)
-        if (diffrence<25):
+        if (diffrence<=50):
             answer = 'is'
         else:
             answer = 'is not'
@@ -418,8 +421,8 @@ def data1():
         data111 = x.iloc[xx],
         dataaa=a1.iloc[aa],
         image1 = imagePath,
-        answer1 = answer,
-        diffrence = diffrence     
+        answer1 = answer
+        
         )
 
     return render_template(

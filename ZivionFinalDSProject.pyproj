@@ -51,6 +51,7 @@
     <Content Include="ZivionFinalDSProject\static\content\bootstrap.min.css" />
     <Content Include="ZivionFinalDSProject\static\content\site.css" />
     <Content Include="ZivionFinalDSProject\static\Data\data1.csv" />
+    <Content Include="ZivionFinalDSProject\static\Data\data2 - Copy.csv" />
     <Content Include="ZivionFinalDSProject\static\Data\data2.csv" />
     <Content Include="ZivionFinalDSProject\static\Data\users.csv" />
     <Content Include="ZivionFinalDSProject\static\fonts\glyphicons-halflings-regular.eot" />
