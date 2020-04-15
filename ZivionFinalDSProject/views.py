@@ -314,9 +314,10 @@ def data2():
     form = QueryFormStructure(request.form)
     b = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data2.csv'))
     if (request.method == 'POST' and form.validate()):
-        imagePath = "/static/content/output.png"
+        imagePath = "/static/content/output2.png"
         bb = b.index[b['Name'] == form.name.data].tolist()
-        data222 = b.iloc[bb]
+        bbb = int(bb[0])
+        data222 = b.iloc[[0,bbb,100]]
         plot = data222.plot(kind='bar',x='Name',y='Ranking')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
@@ -329,7 +330,7 @@ def data2():
         repository_name='DataAnalyze2',
         data222 = b.iloc[b.index[b['Name'] == form.name.data].tolist()],
         dataaa=a.iloc[a.index[a['name'] == form.name.data].tolist()],
-        image = imagePath
+        image2 = imagePath
         )
        
             # Here you should put what to do (or were to go) if registration was good
@@ -381,10 +382,11 @@ def data1():
     form = QueryFormStructure(request.form)
     x  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
     if (request.method == 'POST' and form.validate()):
-        imagePath = "/static/content/output.png"
+        imagePath = "/static/content/output1.png"
         xx = x.index[x['name'] == form.name.data].tolist()
-        data111 = x.iloc[xx]
-        plot = data111.plot(kind='bar',x='name',y='totalScore')
+        xxx = int(xx[0])
+        data111 = x.iloc[[0,xxx,50]]
+        plot = data111.plot.bar(x='name')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
         return render_template(
@@ -395,7 +397,7 @@ def data1():
         repository_name='DataAnalyze1',
         data111 = x.iloc[x.index[x['name'] == form.name.data].tolist()],
         dataaa=a.iloc[a.index[a['name'] == form.name.data].tolist()],
-        image = imagePath,
+        image1 = imagePath,
         )
 
     return render_template(

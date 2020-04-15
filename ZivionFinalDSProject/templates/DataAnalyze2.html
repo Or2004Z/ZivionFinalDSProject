@@ -80,27 +80,22 @@
 </head>
 <body>
     <div class="transbox">
-        <h>The Conection Between Soccer & Knowlege </h>
+        <h>Data Analyze </h>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Knowledge_transfer.svg/998px-Knowledge_transfer.svg.png" width="180" height="120" align="right">
         <table width="200">
             <tr>
-                <th>
+                <td>
                     <x>Fifa</x>
-                    {{ dataaa.to_html(classes="table table-striped") | safe}}
-
+                        {{ dataaa.to_html(classes="table table-striped") | safe}}
+                    </div>
                 </th>
-                <th>
+                <td>
                     <x>Knowlege Rating</x>
                     {{ data222.to_html(classes="table table-striped") | safe}}
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <img src={{image}} alt="my plot"><img />
                 </td>
             </tr>
         </table>
-
+         <img src={{image2}} alt="my plot"><img />
     </div>
-    </body>
+</body>
 {% endblock %}j
