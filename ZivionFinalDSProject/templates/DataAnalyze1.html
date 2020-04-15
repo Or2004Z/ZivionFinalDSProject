@@ -76,6 +76,15 @@
                margin: 10px;
            }
 
+           .x {
+               margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 500;
+           }
+
     </style>
 </head>
 <body>
@@ -86,16 +95,16 @@
             <tr>
                 <td>
                     <x>Fifa</x>
-                        {{ dataaa.to_html(classes="table table-striped") | safe}}
-                    </div>
-                </th>
+                    {{ dataaa.to_html(classes="table table-striped") | safe}}
+                </td>
                 <td>
                     <x>Knowlege Rating</x>
                     {{ data111.to_html(classes="table table-striped") | safe}}
                 </td>
             </tr>
         </table>
-         <img src={{image1}} alt="my plot"><img />
+        <img src={{image1}} alt="my plot"><div class="x"></div><img />
+        <div class="x">The distance Between The Konwlege Rating And The FootBall Level Rating {{diffrence}}. So  From This Country's Analyze We Can Claim That There {{answer1}} Connection Between High Knowelege Level And Fotball Level.</div>
     </div>
 </body>
-{% endblock %}j
+{% endblock %}

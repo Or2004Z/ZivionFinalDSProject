@@ -318,22 +318,30 @@ def data2():
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output2.png"
         last2 = len(b)-1
-        bb = b.index[b['Name'] == form.name.data].tolist()
+        bb = b1.index[b1['Name'] == form.name.data].tolist()
         bbb = int(bb[0])
-        data222 = b.iloc[[0,bbb,last2][1:5]]
+        aa = a.index[a['name'] == form.name.data].tolist()
+        aaa = int(aa[0])
+        data222 = b.iloc[[1,bbb,last2]]
         plot = data222.plot(kind='bar',x='Name',y='Ranking')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
-
+        diffrencee = abs(bbb-aaa)
+        if (diffrencee<25):
+            answerr = 'is'
+        else:
+            answerr = 'is not'
         return render_template(
         'DataAnalyze2.html', 
         year=datetime.now().year,
         form=form, 
         title='DataAnalyze2',
         repository_name='DataAnalyze2',
-        data222 = b.iloc[b1.index[b1['Name'] == form.name.data].tolist(), 1:4],
-        dataaa=a1.iloc[a.index[a['name'] == form.name.data].tolist()],
+        data222 = b.iloc[bb],
+        dataaa=a1.iloc[aa],
         image2 = imagePath,
+        answer2=answerr,
+        diffrence2 = diffrencee,
         )
        
             # Here you should put what to do (or were to go) if registration was good
@@ -388,21 +396,30 @@ def data1():
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output1.png"
         last1 = len(x)-1
-        xx = x.index[x['name'] == form.name.data].tolist()
+        xx = x1.index[x1['name'] == form.name.data].tolist()
         xxx = int(xx[0])
+        aa = a.index[a['name'] == form.name.data].tolist()
+        aaa = int(aa[0])
         data111 = x.iloc[[0,xxx,last1]]
         plot = data111.plot.bar('name')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
+        diffrence = abs(xxx-aaa)
+        if (diffrence<25):
+            answer = 'is'
+        else:
+            answer = 'is not'
         return render_template(
        'DataAnalyze1.html', 
         year=datetime.now().year,
         form=form, 
         title='DataAnalyze1',
         repository_name='DataAnalyze1',
-        data111 = x.iloc[x1.index[x1['name'] == form.name.data].tolist()],
-        dataaa=a1.iloc[a.index[a['name'] == form.name.data].tolist()],
+        data111 = x.iloc[xx],
+        dataaa=a1.iloc[aa],
         image1 = imagePath,
+        answer1 = answer,
+        diffrence = diffrence     
         )
 
     return render_template(
