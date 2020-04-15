@@ -1,12 +1,25 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<!DOCTYPE html>
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for message in messages %}
+<font align="center" size=30 face="Courier New" , Courier, monospace; color="#003333">Register</font>
+
+<font size=15 face="Courier New" , Courier, monospace; color="#002333">{{ message[1] }}</font>
+<p />
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
 <head>
     <style>
-        body {background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');}
+        body {
+            background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');
+        }
+
         div.transbox {
-            margin: 30px;
+            margin: 50px;
             background-color: rgba(255,250,250,0.6);
             border: 1px solid black;
         }
@@ -46,55 +59,90 @@
                 font-weight: 500;
             }
 
-            table {
-                border-collapse: separate;
-                margin-left: 10px;
-                margin-right: 10px;
-            }
+        table {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-right: auto;
+            margin-top: 20px;
+            font-size: 15px;
+            font-family: "Courier New", Courier, monospace;
+            color: #002333;
+            padding: 8px;
+        }
 
-            td, th {
-                margin: 3%;
-                font-size: 15px;
-                font-family: "Courier New", Courier, monospace;
-                text-align: center;
-                color: #002333;
-                padding: 8px;
-            }
-            
-            div.transbox img {
-                margin-left: 15px;
-                margin-right: 15px;
-            }
+        table1 {
+            margin-right: auto;
+            margin-top: 20px;
+            font-size: 20px;
+            font-family: "Courier New", Courier, monospace;
+            color: #002333;
+            padding: 8px;
+        }
+
+
+
+        img {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="transbox">
-        <h>The Conection Between Soccer & Country's Financial status</h>
-        <img src="https://images1.calcalist.co.il/PicServer2/20122005/491392/GETTY462563850835724.jpgL.jpg" width="458" height="300" align="right">
-        <p>Another common steriotype is that in poor coutries the soccer is more popular and the players there are better.</p>
-        <q>Is It True ?</q>
-        <table width="200">
-            <tr>
-                <th>
-                    <x>Fifa</x>
-                    {{ data.to_html(classes="table table-striped") | safe}}
+        <form method=post>
+            <h>The Conection Between Soccer & Country's Financial status</h>
+            <img src="https://images1.calcalist.co.il/PicServer2/20122005/491392/GETTY462563850835724.jpgL.jpg" width="458" height="300" align="right">
+            <p>Another common steriotype is that in poor coutries the soccer is more popular and the players there are better.</p>
+            <q>Is It True ?</q>
+            <table width="200">
+                <tr>
+                    <th>
+                        <x>Fifa</x>
+                        {{ data.to_html(classes="table table-striped") | safe}}
 
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data" style="height:50px; width:100px;">Press</button>
-                    <div id="data" class="collapse">
-                        {{ dataa.to_html(classes="table table-striped") | safe}}
-                    </div>
-                </th>
-                <th>
-                    <x>Economy Rating</x>
-                    {{ data2.to_html(classes="table table-striped") | safe}}
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data" style="height:50px; width:100px;">Press</button>
+                        <div id="data" class="collapse">
+                            {{ dataa.to_html(classes="table table-striped") | safe}}
+                        </div>
+                    </th>
+                    <th>
+                        <x>Economy Rating</x>
+                        {{ data2.to_html(classes="table table-striped") | safe}}
 
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data1" style="height:50px; width:100px;">Press</button>
-                    <div id="data1" class="collapse">
-                        {{ data22.to_html(classes="table table-striped") | safe}}
-                    </div>
-                </th>
-            </tr>
-        </table>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data1" style="height:50px; width:100px;">Press</button>
+                        <div id="data1" class="collapse">
+                            {{ data22.to_html(classes="table table-striped") | safe}}
+                        </div>
+                    </th>
+                    
+                    
+                </tr>
+            </table>
+            {{ form.csrf }}
+            {{ form.csrf_token }}
+            <table1>
+                <tr>
+                    <td>________________________________________________________________________________</td>
+                    <td><h>Analaze The Data -</h></td>
+                    <td><x>write the country that you want to find here</x></td>
+                    <td>
+                    <td>
+                        {{ form.name.label }}
+                    </td>
+                    <td>
+                        {{ form.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input submit">
+                            <input type="submit" value="submit">
+                        </div>
+                    <td>
+                    <td></td>
+                </tr>
+            </table1>
+        </form>
     </div>
 </body>
-{% endblock %}
+        {% endblock %}

@@ -1,0 +1,101 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<head>
+    <style>
+                body {background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');}
+        div.transbox {
+            margin: 50px;
+            background-color: rgba(255,250,250,0.6);
+            border: 1px solid black;
+        }
+
+            div.transbox h {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                font-size: 40px;
+                font-weight: 500;
+            }
+
+            div.transbox p {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: left;
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            div.transbox q {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: center;
+                font-size: 30px;
+                font-weight: 500;
+            }
+
+            div.transbox x {
+                margin: 1%;
+                font-family: "Courier New", Courier, monospace;
+                color: #002333;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 500;
+            }
+
+            table {
+                margin-left: 10px;
+                margin-right: 10px
+                ;
+            }
+
+           th {
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            font-size: 15px;
+            font-family: "Courier New", Courier, monospace;
+            color: #002333;
+            padding: 8px;
+           }
+
+           td
+            {
+            margin-right: auto;
+            margin-top: 20px;
+            font-size: 15px;
+            font-family: "Courier New", Courier, monospace;
+            color: #002333;
+            padding: 8px;
+            }
+
+           img{
+               margin: 10px;
+           }
+
+    </style>
+</head>
+<body>
+    <div class="transbox">
+        <h>Data Analyze </h>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Knowledge_transfer.svg/998px-Knowledge_transfer.svg.png" width="180" height="120" align="right">
+        <table width="200">
+            <tr>
+                <td>
+                    <x>Fifa</x>
+                        {{ dataaa.to_html(classes="table table-striped") | safe}}
+                    </div>
+                </th>
+                <td>
+                    <x>Knowlege Rating</x>
+                    {{ data111.to_html(classes="table table-striped") | safe}}
+                </td>
+            </tr>
+        </table>
+         <img src={{image}} alt="my plot"><img />
+    </div>
+</body>
+{% endblock %}j

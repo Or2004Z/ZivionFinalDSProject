@@ -74,7 +74,8 @@
     <Content Include="ZivionFinalDSProject\static\scripts\_references.js" />
     <Content Include="ZivionFinalDSProject\templates\about.html" />
     <Content Include="ZivionFinalDSProject\templates\contact.html" />
-    <Content Include="ZivionFinalDSProject\templates\register1.html" />
+    <Content Include="ZivionFinalDSProject\templates\DataAnalyze2.html" />
+    <Content Include="ZivionFinalDSProject\templates\DataAnalyze1.html" />
     <Content Include="ZivionFinalDSProject\templates\register.html" />
     <Content Include="ZivionFinalDSProject\templates\data2.html" />
     <Content Include="ZivionFinalDSProject\templates\DataModel.html" />

@@ -24,6 +24,7 @@ import pandas as pd
 
 import json 
 import requests
+import matplotlib.pyplot as plt
 
 import io
 import base64
@@ -252,7 +253,8 @@ fifa = [
           {  "San Marino"},
           {  "Anguilla"},
 ]
-a = pd.DataFrame(fifa)
+a = pd.DataFrame(data=fifa, columns=['name'])
+
 
 ###from DemoFormProject.Models.LocalDatabaseRoutines import IsUserExist, IsLoginGood, AddNewUser 
 
@@ -265,7 +267,6 @@ def home():
     return render_template(
         'index.html',
         title='Home Page',
-        year=datetime.now().year,
     )
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -287,33 +288,62 @@ def register():
         )
 
 @app.route('/')
-@app.route('/register1')
-def register1():
+@app.route('/DataAnalyze1')
+def DataAnalyze1():
     """Renders the home page."""
-    x  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
-    new = x.isin(["israel"]),
     return render_template(
-        'register1.html',
-        title='register1',
+        'DataAnalyze1.html',
+        title='DataAnalyze1',
+        year=datetime.now().year,
+    )
+
+@app.route('/')
+@app.route('/DataAnalyze2')
+def DataAnalyze2():
+    """Renders the home page."""
+    return render_template(
+        'DataAnalyze2.html',
+        title='DataAnalyze2',
         year=datetime.now().year,
     )
 
 
 
-@app.route('/')
-@app.route('/data2')
+@app.route('/data2', methods=['GET', 'POST'])
 def data2():
-    """Renders the home page."""
+    form = QueryFormStructure(request.form)
     b = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data2.csv'))
+    if (request.method == 'POST' and form.validate()):
+        imagePath = "/static/content/output.png"
+        bb = b.index[b['Name'] == form.name.data].tolist()
+        data222 = b.iloc[bb]
+        plot = data222.plot(kind='bar',x='Name',y='Ranking')
+        fig = plot.get_figure()
+        fig.savefig("ZivionFinalDSProject" + imagePath)
+
+        return render_template(
+        'DataAnalyze2.html', 
+        year=datetime.now().year,
+        form=form, 
+        title='DataAnalyze2',
+        repository_name='DataAnalyze2',
+        data222 = b.iloc[b.index[b['Name'] == form.name.data].tolist()],
+        dataaa=a.iloc[a.index[a['name'] == form.name.data].tolist()],
+        image = imagePath
+        )
+       
+            # Here you should put what to do (or were to go) if registration was good
     return render_template(
         'data2.html',
         title='Data2',
         year=datetime.now().year,
+        form=form, 
         data = a.iloc[0:7,0:1],
         dataa = a.iloc[7:,0:1],
         data2 = b.iloc[0:6,1:5],
-        data22 = b.iloc[6:, 1:5],
+        data22 = b.iloc[6:, 1:5]
      )
+
 
 @app.route('/')
 @app.route('/about')
@@ -351,25 +381,33 @@ def data1():
     form = QueryFormStructure(request.form)
     x  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
     if (request.method == 'POST' and form.validate()):
-            return render_template(
-        'register1.html', 
-        form=form, 
-        title='Register New User',
+        imagePath = "/static/content/output.png"
+        xx = x.index[x['name'] == form.name.data].tolist()
+        data111 = x.iloc[xx]
+        plot = data111.plot(kind='bar',x='name',y='totalScore')
+        fig = plot.get_figure()
+        fig.savefig("ZivionFinalDSProject" + imagePath)
+        return render_template(
+       'DataAnalyze1.html', 
         year=datetime.now().year,
-        repository_name='Pandas',
+        form=form, 
+        title='DataAnalyze1',
+        repository_name='DataAnalyze1',
+        data111 = x.iloc[x.index[x['name'] == form.name.data].tolist()],
+        dataaa=a.iloc[a.index[a['name'] == form.name.data].tolist()],
+        image = imagePath,
         )
-            # Here you should put what to do (or were to go) if registration was good
 
     return render_template(
         'data1.html', 
         form=form, 
         title='Register New User',
-        year=datetime.now().year,
         repository_name='Pandas',
         data = a.iloc[0:6,0:1],
         dataa = a.iloc[6:,0:1],
         data1 = x.iloc[0:6,0:6],
         data11 = x.iloc[6:,0:6],
+        year=datetime.now().year,
         )
 
 # -------------------------------------------------------
@@ -383,16 +421,15 @@ def Login():
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
             flash('Login approved!')
+            #return redirect('<were to go if login is good!')
         else:
             flash('Error in - Username and/or password')
-        title='Home Page',
-        year=datetime.now().year
-        return render_template(
+   
+    return render_template(
         'login.html', 
         form=form, 
         title='Login to data analysis',
         year=datetime.now().year,
-        repository_name='Pandas',
         )
 
 

@@ -73,7 +73,7 @@
         table1 {
             margin-right: auto;
             margin-top: 20px;
-            font-size: 30px;
+            font-size: 20px;
             font-family: "Courier New", Courier, monospace;
             color: #002333;
             padding: 8px;
@@ -114,28 +114,35 @@
                     </th>
                 </tr>
             </table>
-                {{ form.csrf }}
-                {{ form.csrf_token }}
-                <table1>
-                    <tr>
-                        <td>
-                            {{ form.name.label }}
-                        </td>
-                        <td>
-                            {{ form.name }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <div class="input submit">
-                                <input type="submit" value="submit">
-                            </div>
-                        <td>
-                        <td></td>
-                    </tr>
-                </table1>
+            {{ form.csrf }}
+            {{ form.csrf_token }}
+            <table1>
+                <tr>
+                    <td>________________________________________________________________________________</td>
+                    <td><h>Analaze The Data -</h></td>
+                    <td><x>write the country that you want to find here</x></td>
+                    <td>
+                        {{ form.name.label }}
+                    </td>
+                    <td>
+                        {{ form.name }}
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="input submit">
+                            <input type="submit" value="submit">
+                        </div>
+                    <td>
+                    <td></td>
+                </tr>
+            </table1>
         </form>
     </div>
 </body>
         {% endblock %}
+
+
+
+
