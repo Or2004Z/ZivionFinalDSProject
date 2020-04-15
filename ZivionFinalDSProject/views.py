@@ -254,6 +254,7 @@ fifa = [
           {  "Anguilla"},
 ]
 a = pd.DataFrame(data=fifa, columns=['name'])
+a1 = a.set_index(a.index+1)
 
 
 ###from DemoFormProject.Models.LocalDatabaseRoutines import IsUserExist, IsLoginGood, AddNewUser 
@@ -312,12 +313,14 @@ def DataAnalyze2():
 @app.route('/data2', methods=['GET', 'POST'])
 def data2():
     form = QueryFormStructure(request.form)
-    b = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data2.csv'))
+    b1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data2.csv'))
+    b = b1.set_index(b1.index+1)
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output2.png"
+        last2 = len(b)-1
         bb = b.index[b['Name'] == form.name.data].tolist()
         bbb = int(bb[0])
-        data222 = b.iloc[[0,bbb,100]]
+        data222 = b.iloc[[0,bbb,last2][1:5]]
         plot = data222.plot(kind='bar',x='Name',y='Ranking')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
@@ -328,9 +331,9 @@ def data2():
         form=form, 
         title='DataAnalyze2',
         repository_name='DataAnalyze2',
-        data222 = b.iloc[b.index[b['Name'] == form.name.data].tolist()],
-        dataaa=a.iloc[a.index[a['name'] == form.name.data].tolist()],
-        image2 = imagePath
+        data222 = b.iloc[b1.index[b1['Name'] == form.name.data].tolist(), 1:4],
+        dataaa=a1.iloc[a.index[a['name'] == form.name.data].tolist()],
+        image2 = imagePath,
         )
        
             # Here you should put what to do (or were to go) if registration was good
@@ -339,10 +342,10 @@ def data2():
         title='Data2',
         year=datetime.now().year,
         form=form, 
-        data = a.iloc[0:7,0:1],
-        dataa = a.iloc[7:,0:1],
-        data2 = b.iloc[0:6,1:5],
-        data22 = b.iloc[6:, 1:5]
+        data = a1.iloc[0:7,0:1],
+        dataa = a1.iloc[7:,0:1],
+        data2 = b.iloc[0:6,1:4],
+        data22 = b.iloc[6:,1:4]
      )
 
 
@@ -380,13 +383,15 @@ def DataModel():
 @app.route('/data1', methods=['GET', 'POST'])
 def data1():
     form = QueryFormStructure(request.form)
-    x  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
+    x1  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
+    x = x1.set_index(x1.index+1)
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output1.png"
+        last1 = len(x)-1
         xx = x.index[x['name'] == form.name.data].tolist()
         xxx = int(xx[0])
-        data111 = x.iloc[[0,xxx,50]]
-        plot = data111.plot.bar(x='name')
+        data111 = x.iloc[[0,xxx,last1]]
+        plot = data111.plot.bar('name')
         fig = plot.get_figure()
         fig.savefig("ZivionFinalDSProject" + imagePath)
         return render_template(
@@ -395,8 +400,8 @@ def data1():
         form=form, 
         title='DataAnalyze1',
         repository_name='DataAnalyze1',
-        data111 = x.iloc[x.index[x['name'] == form.name.data].tolist()],
-        dataaa=a.iloc[a.index[a['name'] == form.name.data].tolist()],
+        data111 = x.iloc[x1.index[x1['name'] == form.name.data].tolist()],
+        dataaa=a1.iloc[a.index[a['name'] == form.name.data].tolist()],
         image1 = imagePath,
         )
 
@@ -405,8 +410,8 @@ def data1():
         form=form, 
         title='Register New User',
         repository_name='Pandas',
-        data = a.iloc[0:6,0:1],
-        dataa = a.iloc[6:,0:1],
+        data = a1.iloc[0:6,0:1],
+        dataa = a1.iloc[6:,0:1],
         data1 = x.iloc[0:6,0:6],
         data11 = x.iloc[6:,0:6],
         year=datetime.now().year,
