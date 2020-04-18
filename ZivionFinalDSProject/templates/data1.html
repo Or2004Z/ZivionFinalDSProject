@@ -4,7 +4,7 @@
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for message in messages %}
-<font size=15 color="#FF0000">{{ message[1] }}</font>
+<font size=10 color="#FF0000">{{ message[1] }}</font>
 {% endfor %}
 {% endif %}
 {% endwith %}
@@ -81,7 +81,7 @@
             Analaze The Data
         </h3>
         <p>
-            write the country that you want to find here
+            write the country that you want to find here (the first letter in capital)
         </p>
         <form method=post>
             {{ form.csrf }}
