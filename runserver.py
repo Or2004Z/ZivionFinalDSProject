@@ -15,4 +15,4 @@ if __name__ == '__main__':
         PORT = 5555
 
     app.config['SECRET_KEY'] = 'All You Need Is Love Ta ta ta ta ta'
-    app.run(HOST, PORT)
+    app.run(HOST, PORT, debug=True)

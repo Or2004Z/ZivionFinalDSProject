@@ -1,10 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - OrZivyon Website</title>
     <title>{{ title }} - My Flask Application</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Condensed|Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
@@ -12,45 +14,48 @@
 
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #e3f2fd;">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="/" class="navbar-brand"><font size=10 face="Courier New" , Courier, monospace; color="#002333">Zivy✡n</font></a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="{{ url_for('home') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">Home</font></a></li>
-                        <li><a href="{{ url_for('DataModel') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">DataModel</font></a></li>
-                        <li><a href="{{ url_for('about') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">About</font></a></li>
-                        <li><a class="active" href="{{ url_for('data1') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">Soccer & Konwelege</font></a></li>
-                        <li><a class="active" href="{{ url_for('data2') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">Soccer & Money</font></a></li>
-                        <li><a class="active" href="{{ url_for('Login') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">Login</font></a></li>
-                        <li><a class="active" href="{{ url_for('register') }}"><font size=3 face="Courier New" , Courier, monospace; color="#002333">Register</font></a></li>
-                        <li><a class="active" href="{{ url_for('contact') }}"><font size=3  face="Courier New" , Courier, monospace; color="#002333">Contact</font></a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand"
+                    style="font-size: 22px; font-weight: bold; font-family: 'Lato';">Zivy✡n</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('DataModel') }}">DataModel</a></li>
+                    <li><a href="{{ url_for('about') }}">About</a></li>
+                    <li><a class="active" href="{{ url_for('data1') }}">Soccer & Konwelege</a></li>
+                    <li><a class="active" href="{{ url_for('data2') }}">Soccer & Money</a></li>
+                    <li><a class="active" href="{{ url_for('Login') }}">Login</a></li>
+                    <li><a class="active" href="{{ url_for('register') }}">Register</a></li>
+                    <li><a class="active" href="{{ url_for('contact') }}">Contact</a></li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div class="container body-content">
-            {% block content %}{% endblock %}
-            <hr />
-            <footer>
-                <p>&copy; {{ year }} - My Flask Application</p>
-            </footer>
-        </div>
+    <div class="container body-content">
+        {% block content %}{% endblock %}
 
-        <script src="/static/scripts/jquery-1.10.2.js"></script>
-        <script src="/static/scripts/bootstrap.js"></script>
-        <script src="/static/scripts/respond.js"></script>
-        {% block scripts %}{% endblock %}
+    </div>
+
+    <footer class="page-footer fixed-bottom">
+        <p>&copy; {{ year }} - My Flask Application</p>
+    </footer>
+
+    <script src="/static/scripts/jquery-1.10.2.js"></script>
+    <script src="/static/scripts/bootstrap.js"></script>
+    <script src="/static/scripts/respond.js"></script>
+    {% block scripts %}{% endblock %}
 
 </body>
+
 </html>

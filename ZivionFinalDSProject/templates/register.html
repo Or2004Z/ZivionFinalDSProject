@@ -3,37 +3,23 @@
 {% block content %}
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
-    {% for message in messages %}
-<font align="center" size=30 face="Courier New" , Courier, monospace; color="#003333">Register</font>
+{% for message in messages %}
+<font align="center" size=30 color="#003333">Register</font>
 
-<font size=15 face="Courier New" , Courier, monospace; color="#002333">{{ message[1] }}</font>
+<font size=15 color="#002333">{{ message[1] }}</font>
 <p />
-        {% endfor %}
-        {% endif %}
-        {% endwith %}
+{% endfor %}
+{% endif %}
+{% endwith %}
 
-<head>
-    <style>
-        body {
-            background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');
-        }
+<style>
+    td {
+        margin: 1%;
+        text-align: left;
+        font-size: 22px;
+    }
+</style>
 
-        div.transbox {
-            margin: 30px;
-            background-color: rgba(255,250,250,0.6);
-            border: 1px solid black;
-        }
-
-        td {
-            margin: 1%;
-            font-family: "Courier New", Courier, monospace;
-            color: #002333;
-            text-align: left;
-            font-size: 30px;
-            font-weight: 100;
-        }
-    </style>
-</head>
 <div class="transbox">
     <form method=post>
         {{ form.csrf }}
@@ -48,7 +34,8 @@
                 </td>
                 <td>
                     {% if form.FirstName.errors %}
-                    <ul class="text-danger">{% for error in form.FirstName.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                    <ul class="text-danger">{% for error in form.FirstName.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
                     {% endif %}
                 </td>
             </tr>
@@ -87,7 +74,8 @@
                 </td>
                 <td>
                     {% if form.EmailAddr.errors %}
-                    <ul class="text-danger">{% for error in form.EmailAddr.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                    <ul class="text-danger">{% for error in form.EmailAddr.errors %}<li>{{ error }}</li>{% endfor %}
+                    </ul>
                     {% endif %}
                 </td>
             </tr>
@@ -129,5 +117,4 @@
         </table>
     </form>
 </div>
-</body>
-        {% endblock %}
+{% endblock %}

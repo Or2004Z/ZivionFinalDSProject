@@ -1,81 +1,74 @@
 ﻿{% extends "layout.html" %}
 
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');
-        }
+<!-- <style>
+    div.transbox h {
+        margin: 1%;
+        font-family: "Courier New", Courier, monospace;
+        color: #002333;
+        text-align: left;
+        font-size: 70px;
+        font-weight: 500;
+    }
 
-        div.transbox {
-            margin: 50px;
-            background-color: rgba(255,250,250,0.6);
-            border: 1px solid black;
-        }
+    div.transbox p {
+        margin: 1%;
+        font-family: "Courier New", Courier, monospace;
+        color: #002333;
+        text-align: left;
+        font-size: 25px;
+        font-weight: 500;
+    }
 
-            div.transbox h {
-                margin: 1%;
-                font-family: "Courier New", Courier, monospace;
-                color: #002333;
-                text-align: left;
-                font-size: 70px;
-                font-weight: 500;
-            }
-
-            div.transbox p {
-                margin: 1%;
-                font-family: "Courier New", Courier, monospace;
-                color: #002333;
-                text-align: left;
-                font-size: 25px;
-                font-weight: 500;
-            }
-
-            div.transbox x {
-                margin: 1%;
-                font-family: "Courier New", Courier, monospace;
-                color: #002333;
-                font-size: 20px;
-                font-weight: 500;
-            }
+    div.transbox x {
+        margin: 1%;
+        font-family: "Courier New", Courier, monospace;
+        color: #002333;
+        font-size: 20px;
+        font-weight: 500;
+    }
 
 
-            div.transbox img1 {
-                margin: 1%;
-            }
-    </style>
-</head>
-<body>
-        <div class="transbox">
-            <h>My Data</h>
-            <img src="https://pngimage.net/wp-content/uploads/2018/06/file-data-png-2.png" alt="Data1" width="400" height="400" align="right">
-            <p>Data 1 - Fifa Country Rating</p>
-            <p>In this website we see the countries rating by soocer level.</p>
-            <button onclick="window.location.href='https://int.soccerway.com/teams/rankings/fifa/'">Link</button>
-            <form method="get" action="/data1">
-                <button type="submit">DataSet</button>
-            </form>
-            <p></p>
-            <p>Data 2 - Knowlege Country Rating</p>
-            <p>In this website we see the countries rating by knowlege.</p>
-            <button onclick="window.location.href='http://worldpopulationreview.com/countries/education-rankings-by-country/'">Link</button>
-            <form method="get" action="/data1">
-                <button type="submit">DataSet</button>
-            </form>
+    div.transbox img1 {
+        margin: 1%;
+    }
+</style> -->
+<style>
+    .transbox form {
+        margin: 0;
+    }
+</style>
 
-            <p></p>
-            <p>Data 3 - Economy Country Rating</p>
-            <p>In this website we see the countries rating by economy.</p>
-            <button onclick="window.location.href='http://worldpopulationreview.com/countries/education-rankings-by-country/'">Link</button>
-            <form method="get" action="/data2">
-                <button type="submit">DataSet</button>
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+<div class="transbox">
+    <h2>My Data</h2>
+    <br />
+    <img src="https://pngimage.net/wp-content/uploads/2018/06/file-data-png-2.png" alt="Data1" width="300"
+        align="right">
+    <h3>Data 1 - Fifa Country Rating</h3>
+    <p>In this website we see the countries rating by soocer level.</p>
+    <button onclick="window.location.href='https://int.soccerway.com/teams/rankings/fifa/'">Link</button>
+    <form method="get" action="/data1">
+        <button type="submit">DataSet</button>
+    </form>
+    <p></p>
+    <h3>Data 2 - Knowlege Country Rating</h3>
+    <p>In this website we see the countries rating by knowlege.</p>
+    <button
+        onclick="window.location.href='http://worldpopulationreview.com/countries/education-rankings-by-country/'">Link</button>
+    <form method="get" action="/data1">
+        <button type="submit">DataSet</button>
+    </form>
+
+    <p></p>
+    <h3>Data 3 - Economy Country Rating</h3>
+    <p>In this website we see the countries rating by economy.</p>
+    <button
+        onclick="window.location.href='http://worldpopulationreview.com/countries/education-rankings-by-country/'">Link</button>
+    <form method="get" action="/data2">
+        <button type="submit">DataSet</button>
+    </form>
+</div>
+</div>
+
 
 {% endblock %}
-,

@@ -313,48 +313,51 @@ def DataAnalyze2():
 @app.route('/data2', methods=['GET', 'POST'])
 def data2():
     form = QueryFormStructure(request.form)
-    b1 = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data2.csv'))
+    b1 = pd.read_csv(path.join(path.dirname(__file__), 'static', 'Data', 'data2.csv'))
     b1['USdollars'] = b1['USdollars'].astype(int)
     b = b1.set_index(b1.index+1)
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output2.png"
         last2 = len(b)-1
         bb = b1.index[b1['Name'] == form.name.data].tolist()
-        bbb = int(bb[0])
         aa = a.index[a['name'] == form.name.data].tolist()
-        aaa = int(aa[0])
-        data222 = b.iloc[[1,bbb,last2]]
-        plot = data222.plot(kind='bar',x='Name',y='USdollars')
-        fig = plot.get_figure()
-        fig.savefig("ZivionFinalDSProject" + imagePath)
-        diffrencee = abs(bbb-aaa)
-        if (diffrencee<=50):
-            answerr = 'is'
+        if (len(bb) > 0 and len(aa) > 0):
+            bbb = int(bb[0])
+            aaa = int(aa[0])
+            data222 = b.iloc[[1,bbb,last2]]
+            plot = data222.plot(kind='bar',x='Name',y='USdollars')
+            fig = plot.get_figure()
+            fig.savefig("ZivionFinalDSProject" + imagePath)
+            diffrencee = abs(bbb-aaa)
+            if (diffrencee<=50):
+                answerr = 'is'
+            else:
+                answerr = 'is not'
+
+
+            return render_template(
+            'DataAnalyze2.html', 
+            year=datetime.now().year,
+            form=form, 
+            title='DataAnalyze2',
+            repository_name='DataAnalyze2',
+            data222 = b.iloc[bb],
+            dataaa=a1.iloc[aa],
+            image2 = imagePath,
+            answer2 = answerr,
+            diffrence2 = diffrencee,
+            fifa = fifa,
+            )
         else:
-            answerr = 'is not'
-
-
-        return render_template(
-        'DataAnalyze2.html', 
-        year=datetime.now().year,
-        form=form, 
-        title='DataAnalyze2',
-        repository_name='DataAnalyze2',
-        data222 = b.iloc[bb],
-        dataaa=a1.iloc[aa],
-        image2 = imagePath,
-        answer2 = answerr,
-        diffrence2 = diffrencee,
-        )
-       
+           flash('There Is No Such Country')
             # Here you should put what to do (or were to go) if registration was good
     return render_template(
         'data2.html',
         title='Data2',
         year=datetime.now().year,
         form=form, 
-        data = a1.iloc[0:7,0:1],
-        dataa = a1.iloc[7:,0:1],
+        data = a1.iloc[0:6,0:1],
+        dataa = a1.iloc[6:,0:1],
         data2 = b.iloc[0:6,1:4],
         data22 = b.iloc[6:,1:4]
      )
@@ -394,36 +397,39 @@ def DataModel():
 @app.route('/data1', methods=['GET', 'POST'])
 def data1():
     form = QueryFormStructure(request.form)
-    x1  = pd.read_csv(path.join(path.dirname(__file__), 'static\\Data\\data1.csv'))
+    x1  = pd.read_csv(path.join(path.dirname(__file__), 'static', 'Data', 'data1.csv'))
     x = x1.set_index(x1.index+1)
     if (request.method == 'POST' and form.validate()):
         imagePath = "/static/content/output1.png"
         last1 = len(x)-1
         xx = x1.index[x1['name'] == form.name.data].tolist()
-        xxx = int(xx[0])
         aa = a.index[a['name'] == form.name.data].tolist()
-        aaa = int(aa[0])
-        data111 = x.iloc[[0,xxx,last1]]
-        plot = data111.plot.bar('name')
-        fig = plot.get_figure()
-        fig.savefig("ZivionFinalDSProject" + imagePath)
-        diffrence = abs(xxx-aaa)
-        if (diffrence<=50):
-            answer = 'is'
-        else:
-            answer = 'is not'
-        return render_template(
-       'DataAnalyze1.html', 
-        year=datetime.now().year,
-        form=form, 
-        title='DataAnalyze1',
-        repository_name='DataAnalyze1',
-        data111 = x.iloc[xx],
-        dataaa=a1.iloc[aa],
-        image1 = imagePath,
-        answer1 = answer
+        if (len(xx) > 0 and len(aa) > 0):
+            xxx = int(xx[0])
+            aaa = int(aa[0])
+            data111 = x.iloc[[0,xxx,last1]]
+            plot = data111.plot.bar('name')
+            fig = plot.get_figure()
+            fig.savefig("ZivionFinalDSProject" + imagePath)
+            diffrence = abs(xxx-aaa)
+            if (diffrence<=50):
+                answer = 'is'
+            else:
+                answer = 'is not'
+            return render_template(
+           'DataAnalyze1.html', 
+            year=datetime.now().year,
+            form=form, 
+            title='DataAnalyze1',
+            repository_name='DataAnalyze1',
+            data111 = x.iloc[xx],
+            dataaa=a1.iloc[aa],
+            image1 = imagePath,
+            answer1 = answer
         
-        )
+            )
+        else:
+           flash('There Is No Such Country')
 
     return render_template(
         'data1.html', 
