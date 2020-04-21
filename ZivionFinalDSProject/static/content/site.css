@@ -1,20 +1,20 @@
 * {
-    font-family: 'Lato', sans-serif !important;
+    font-family: "Lucida Console", monospace;
 }
 
 body {
-    font-family: 'Lato', sans-serif !important;
+    font-family: "Lucida Console", monospace;
     padding-top: 50px;
     padding-bottom: 20px;
     background-image: url('https://d25qe19fo1nsn4.cloudfront.net/wp-content/uploads/2016/10/US-Soccer-Federation.jpg');
 }
 
 .navbar a {
-    font-family: 'Roboto Condensed', sans-serif !important;
+    font-family: "Lucida Console", monospace;
 }
 
 .hebrew {
-    font-family: 'Rubik', sans-serif !important;
+    font-family: "Lucida Console", monospace;
 }
 
 /* h1,
@@ -58,10 +58,10 @@ div.transbox * {
 /* font-weight: 500; */
 /* } */
 
-*/ div.transbox p {
-    font-family: 'Lato', sans-serif;
+ div.transbox p {
+    font-family: "Lucida Console", monospace;
     text-align: left;
-    font-size: 30px;
+    font-size: 20px;
 }
 
 div.transbox x {
@@ -83,9 +83,9 @@ footer {
 
 }
 
-footer p {
-    font-family: 'Roboto Condensed', sans-serif !important;
-}
+    footer p {
+        font-family: "Lucida Console", monospace !important;
+    }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,

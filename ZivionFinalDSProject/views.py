@@ -411,8 +411,8 @@ def data1():
             plot = data111.plot.bar('name')
             fig = plot.get_figure()
             fig.savefig("ZivionFinalDSProject" + imagePath)
-            diffrence = abs(xxx-aaa)
-            if (diffrence<=50):
+            diffrencee = abs(xxx-aaa)
+            if (diffrencee<=50):
                 answer = 'is'
             else:
                 answer = 'is not'
@@ -425,7 +425,8 @@ def data1():
             data111 = x.iloc[xx],
             dataaa=a1.iloc[aa],
             image1 = imagePath,
-            answer1 = answer
+            answer1 = answer,
+            diffrencee = diffrencee,
         
             )
         else:
