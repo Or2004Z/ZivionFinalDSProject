@@ -1,60 +1,63 @@
 ﻿{% extends "layout.html" %}
 
 {% block content %}
-
-
 {% with messages = get_flashed_messages(with_categories=true) %}
 {% if messages %}
 {% for message in messages %}
+<font size=10 color="#FFFFFF">{{ message[1] }}</font>
 {% endfor %}
 {% endif %}
 {% endwith %}
 
-    <div class="transbox">
-        <form method=post>
-            {{ form.csrf }}
-            {{ form.csrf_token }}
-            <table>
-                <tr>
-                    <td>
-                        {{ form.username.label }}
-                    </td>
-                    <td>
-                        {{ form.username }}
-                    </td>
-                    <td>
-                        {% if form.username.errors %}
-                        <ul class="text-danger">{% for error in form.username.errors %}<li>{{ error }}</li>{% endfor %}
-                        </ul>
-                        {% endif %}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        {{ form.password.label }}
-                    </td>
-                    <td>
-                        {{ form.password }}
-                    </td>
-                    <td>
-                        {% if form.password.errors %}
-                        <ul class="text-danger">{% for error in form.password.errors %}<li>{{ error }}</li>{% endfor %}
-                        </ul>
-                        {% endif %}
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="input submit">
-                            <input type="submit" value="Login">
-                        </div>
-                    <td>
-                    <td></td>
-                </tr>
-            </table>
-        </form>
-    </div>
+<div class="transbox">
+    <form method=post>
+        {{ form.csrf }}
+        {{ form.csrf_token }}
+        <table>
+            <tr>
+                <td>
+                    {{ form.username.label }}
+                </td>
+                <td>
+                    {{ form.username }}
+                </td>
+                <td>
+                    {% if form.username.errors %}
+                    <ul class="text-danger">
+                        {% for error in form.username.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ form.password.label }}
+                </td>
+                <td>
+                    {{ form.password }}
+                </td>
+                <td>
+                    {% if form.password.errors %}
+                    <ul class="text-danger">
+                        {% for error in form.password.errors %}
+                        <li>{{ error }}</li>{% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <div class="input submit">
+                        <input type="submit" value="Login">
+                    </div>
+                <td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
 
 {% endblock %}
