@@ -83,6 +83,7 @@
         <p>
             write the country that you want to find here (the first letter in capital)
         </p>
+        {% if logged == 1 %}
         <form method=post>
             {{ form.csrf }}
             {{ form.csrf_token }}
@@ -90,6 +91,9 @@
             {{ form.name }}
             <input type="submit" value="submit" class="btn btn-info">
         </form>
+        {% else %}
+        <h1>Tamut Kelev</h1>
+        {% endif %}
     </div>
 </div>
 

@@ -14,38 +14,42 @@
 
     <h2>The Conection Between Soccer & Country's Financial status</h2>
     <img src="https://images1.calcalist.co.il/PicServer2/20122005/491392/GETTY462563850835724.jpgL.jpg" width="350"
-        align="right">
-    <p>Another common steriotype is that in rich coutries the soccer is more popular and the players there are
-        better.</p>
+         align="right">
+    <p>
+        Another common steriotype is that in rich coutries the soccer is more popular and the players there are
+        better.
+    </p>
     <p>Is It True ?</p>
     <div class="table-container" style="display: flex; align-items: center;">
-        <div
-            style="display: flex; align-items: flex-start; align-self: flex-start; flex-direction: column; justify-content: flex-start; width: 35%">
+        <div style="display: flex; align-items: flex-start; align-self: flex-start; flex-direction: column; justify-content: flex-start; width: 35%">
             <h3 style="margin-bottom: 10px; margin-left: 0;">
                 FIFA
             </h3>
             {{ data.to_html(classes="table table-striped") | safe}}
             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data"
-                style="height:30px; width:100px; margin-top: 10px;">Press</button>
+                    style="height:30px; width:100px; margin-top: 10px;">
+                Press
+            </button>
             <div id="data" class="collapse">
                 {{ dataa.to_html(classes="table table-striped") | safe}}
             </div>
         </div>
-        <div
-            style="display: flex; align-items: flex-start; align-self: flex-start; flex-direction: column; justify-content: flex-start; width: 65%; margin-top: 0;">
+        <div style="display: flex; align-items: flex-start; align-self: flex-start; flex-direction: column; justify-content: flex-start; width: 65%; margin-top: 0;">
             <h3 style="margin-bottom: 10px; margin-left: 0;">
                 Economy Rating
             </h3>
             {{ data2.to_html(classes="table table-striped") | safe}}
 
             <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#data1"
-                style="height:30px; width:100px;">Press</button>
+                    style="height:30px; width:100px;">
+                Press
+            </button>
             <div id="data1" class="collapse">
                 {{ data22.to_html(classes="table table-striped") | safe}}
             </div>
         </div>
     </div>
-  
+
     <h3>
         Analaze The Data
     </h3>
@@ -53,6 +57,7 @@
         write the country that you want to find here (the first letter in capital)
 
     </p>
+    {% if logged == 1 %}
     <form method=post>
         {{ form.csrf }}
         {{ form.csrf_token }}
@@ -60,6 +65,9 @@
         {{ form.name }}
         <input type="submit" value="submit" class="btn btn-info">
     </form>
+    {% else %}
+    <h1>Tamut Kelev</h1>
+    {% endif %}
 </div>
 
 {% endblock %}

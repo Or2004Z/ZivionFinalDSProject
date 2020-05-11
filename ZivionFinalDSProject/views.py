@@ -256,6 +256,7 @@ fifa = [
 a = pd.DataFrame(data=fifa, columns=['name'])
 a1 = a.set_index(a.index+1)
 
+logged = 0
 
 ###from DemoFormProject.Models.LocalDatabaseRoutines import IsUserExist, IsLoginGood, AddNewUser 
 
@@ -314,13 +315,13 @@ def DataAnalyze2():
 def data2():
     form = QueryFormStructure(request.form)
     b1 = pd.read_csv(path.join(path.dirname(__file__), 'static', 'Data', 'data2.csv'))
-    b1['USdollars'] = b1['USdollars'].astype(int)
-    b = b1.set_index(b1.index+1)
+    b1['USdollars'] = b1['USdollars'].astype(int) 
+    b = b1.set_index(b1.index+1)  
     if (request.method == 'POST' and form.validate()):
-        imagePath = "/static/content/output2.png"
         last2 = len(b)-1
         bb = b1.index[b1['Name'] == form.name.data].tolist()
         aa = a.index[a['name'] == form.name.data].tolist()
+        imagePath = "/static/content/" + form.name.data + "2.png"
         if (len(bb) > 0 and len(aa) > 0):
             bbb = int(bb[0])
             aaa = int(aa[0])
@@ -355,7 +356,8 @@ def data2():
         'data2.html',
         title='Data2',
         year=datetime.now().year,
-        form=form, 
+        form=form,
+        logged = logged,
         data = a1.iloc[0:6,0:1],
         dataa = a1.iloc[6:,0:1],
         data2 = b.iloc[0:6,1:4],
@@ -367,11 +369,12 @@ def data2():
 @app.route('/about')
 def about():
     """Renders the home page."""
-    return render_template(
-        'about.html',
-        title='about Page',
-        year=datetime.now().year,
-    )
+    if (isLoggedIn == 1) :
+        return render_template(
+            'about.html',
+            title='about Page',
+            year=datetime.now().year,
+        )
 
 @app.route('/')
 @app.route('/contact')
@@ -400,10 +403,10 @@ def data1():
     x1  = pd.read_csv(path.join(path.dirname(__file__), 'static', 'Data', 'data1.csv'))
     x = x1.set_index(x1.index+1)
     if (request.method == 'POST' and form.validate()):
-        imagePath = "/static/content/output1.png"
         last1 = len(x)-1
         xx = x1.index[x1['name'] == form.name.data].tolist()
         aa = a.index[a['name'] == form.name.data].tolist()
+        imagePath = "/static/content/" + form.name.data + "1.png"
         if (len(xx) > 0 and len(aa) > 0):
             xxx = int(xx[0])
             aaa = int(aa[0])
@@ -441,6 +444,7 @@ def data1():
         dataa = a1.iloc[6:,0:1],
         data1 = x.iloc[0:6,0:6],
         data11 = x.iloc[6:,0:6],
+        logged = logged,
         year=datetime.now().year,
         )
 
@@ -450,13 +454,15 @@ def data1():
 # -------------------------------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def Login():
+    global logged
     form = LoginFormStructure(request.form)
-
     if (request.method == 'POST' and form.validate()):
         if (db_Functions.IsLoginGood(form.username.data, form.password.data)):
+            logged = 1
             flash('Login approved!')
             #return redirect('<were to go if login is good!')
         else:
+            logged = 0
             flash('Error in - Username and/or password')
    
     return render_template(
